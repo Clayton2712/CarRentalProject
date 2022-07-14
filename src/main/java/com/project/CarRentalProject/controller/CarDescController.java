@@ -50,11 +50,15 @@ public class CarDescController {
         return new ResponseEntity<>(CarDescDTO.from(deletedCarDesc), HttpStatus.OK);
     }
 
+    ////Should not update immutable characteristics
+/*
+
     @PutMapping(value = "{id}")
     public ResponseEntity<CarDescDTO> updateCarDesc(@PathVariable final Long id, @RequestBody final CarDescDTO carDescDTO){
         CarDesc updatedCarDesc = carDescService.updateCarDescByID(id, CarDesc.from(carDescDTO));
 
         return new ResponseEntity<>(CarDescDTO.from(updatedCarDesc),HttpStatus.OK);
     }
+*/
 
 }

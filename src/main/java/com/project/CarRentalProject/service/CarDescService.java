@@ -37,6 +37,8 @@ public class CarDescService {
         return carDesc;
     }
 
+    //Should not update immutable characteristics
+    /*
     @Transactional
     public CarDesc updateCarDescByID(Long id, CarDesc carDesc){
         CarDesc carDescUpdater = getCarDescByID(id);
@@ -47,5 +49,6 @@ public class CarDescService {
 
         return carDescRepository.save(carDescUpdater);
     }
+    */
 
 }
