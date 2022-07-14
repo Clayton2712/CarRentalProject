@@ -17,12 +17,13 @@ public class Car {
     @Column(nullable = false, updatable = false)
     private Long descId;
 
+    @Column(nullable = false)
     private Float bookValue;
 
     public static Car from(CarDTO carDTO){
         Car car = new Car();
+
         car.setBookValue(carDTO.getBookValue());
-        car.setDescId(carDTO.getDescId());
 
         return car;
     }
