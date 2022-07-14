@@ -1,5 +1,6 @@
 package com.project.CarRentalProject.model;
 
+import com.project.CarRentalProject.model.DTOs.ClientDTO;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -17,4 +18,12 @@ public class Client {
     private String clientCellNum;
 
     private String clientName;
+
+    public static Client from(ClientDTO clientDTO){
+        Client client = new Client();
+        client.setClientName(clientDTO.getClientName());
+        client.setClientCellNum(clientDTO.getClientCellNum());
+
+        return client;
+    }
 }
