@@ -17,9 +17,7 @@ public class CarController {
     private final CarService carService;
 
     @Autowired
-    public CarController(CarService carService) {
-        this.carService = carService;
-    }
+    public CarController(CarService carService) {this.carService = carService;}
 
     //CRUD
     @PostMapping
@@ -36,6 +34,7 @@ public class CarController {
 
         return new ResponseEntity<>(carsDTO, HttpStatus.OK);
     }
+
     @GetMapping(value = "{id}")
     public ResponseEntity<CarDTO> getCar(@PathVariable final Long id){
         Car car = carService.getCarById(id);
@@ -56,5 +55,4 @@ public class CarController {
 
         return new ResponseEntity<>(CarDTO.from(updatedCar), HttpStatus.OK);
     }
-
 }
