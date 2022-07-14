@@ -12,7 +12,7 @@ import java.util.List;
 public class CarService {
     private final CarRepository carRepository;
 
-    @Autowired
+    @Autowired //Inject CarRepo
     public CarService(CarRepository carRepository) {
         this.carRepository = carRepository;
     }
@@ -21,21 +21,21 @@ public class CarService {
 
     public List<Car> getAllCars() {return carRepository.findAll();}
 
-    public Car getCarByID(Long id) {return carRepository.getReferenceById(id);}
+    public Car getCarById(Long id) {return carRepository.getReferenceById(id);}
 
-    public Car deleteCarByID(Long id) {
-        Car car = getCarByID(id);
+    public Car deleteCarById(Long id) {
+        Car car = getCarById(id);
         carRepository.delete(car);
         return car;
     }
 
     @Transactional
-    public Car updateCarByID(Long id, Car car){
-        Car initialCar = getCarByID(id);
+    public Car updateCarById(Long id, Car car){
+        Car carUpdater = getCarById(id);
 
-        initialCar.setBookValue(car.getBookValue());
+        carUpdater.setBookValue(car.getBookValue());
 
-        return initialCar;
+        return carUpdater;
     }
 
 }

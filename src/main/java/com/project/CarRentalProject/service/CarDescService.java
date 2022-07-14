@@ -14,7 +14,7 @@ public class CarDescService {
 
     private final CarDescRepository carDescRepository;
 
-    @Autowired
+    @Autowired //Inject CarDescRepo
     public CarDescService(CarDescRepository carDescRepository) {
         this.carDescRepository = carDescRepository;
     }
@@ -39,13 +39,13 @@ public class CarDescService {
 
     @Transactional
     public CarDesc updateCarDescByID(Long id, CarDesc carDesc){
-        CarDesc initialCarDesc = getCarDescByID(id);
+        CarDesc carDescUpdater = getCarDescByID(id);
 
-        initialCarDesc.setCarCategory(carDesc.getCarCategory());
-        initialCarDesc.setCarModel(carDesc.getCarModel());
-        initialCarDesc.setCarBrand(carDesc.getCarBrand());
+        carDescUpdater.setCarCategory(carDesc.getCarCategory());
+        carDescUpdater.setCarModel(carDesc.getCarModel());
+        carDescUpdater.setCarBrand(carDesc.getCarBrand());
 
-        return initialCarDesc;
+        return carDescUpdater;
     }
 
 }
