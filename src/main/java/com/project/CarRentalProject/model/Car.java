@@ -15,6 +15,8 @@ public class Car {
     private Long carId;
 
     @Column(nullable = false, updatable = false)
+    //@OneToMany(fetch = FetchType.LAZY)
+    //@JoinColumn(name = "descId")
     private Long descId;
 
     @Column(nullable = false)

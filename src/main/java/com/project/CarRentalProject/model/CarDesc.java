@@ -14,8 +14,13 @@ public class CarDesc {
     @Column(updatable = false)
     private Long descId;
 
+    @Column(nullable = false, updatable = false)
     private String carModel;
+
+    @Column(nullable = false, updatable = false)
     private String carBrand;
+
+    @Column(nullable = false, updatable = false)
     private String carCategory;
 
     public static CarDesc from(CarDescDTO carDescDTO){
