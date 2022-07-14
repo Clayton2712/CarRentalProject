@@ -45,7 +45,7 @@ public class CarDescService {
         carDescUpdater.setCarModel(carDesc.getCarModel());
         carDescUpdater.setCarBrand(carDesc.getCarBrand());
 
-        return carDescUpdater;
+        return carDescRepository.save(carDescUpdater);
     }
 
 }

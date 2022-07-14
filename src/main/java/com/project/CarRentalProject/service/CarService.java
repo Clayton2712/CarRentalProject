@@ -35,7 +35,7 @@ public class CarService {
 
         carUpdater.setBookValue(car.getBookValue());
 
-        return carUpdater;
+        return carRepository.save(carUpdater);
     }
 
 }

@@ -26,6 +26,7 @@ public class Car {
         Car car = new Car();
 
         car.setBookValue(carDTO.getBookValue());
+        car.setDescId(carDTO.getDescId());
 
         return car;
     }

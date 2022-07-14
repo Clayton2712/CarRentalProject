@@ -35,7 +35,7 @@ public class ClientService {
         clientUpdater.setClientName(client.getClientName());
         clientUpdater.setClientCellNum(client.getClientCellNum());
 
-        return clientUpdater;
+        return clientRepository.save(clientUpdater);
     }
 
 }
