@@ -1,7 +1,6 @@
 package com.project.CarRentalProject.service;
 
 import com.project.CarRentalProject.model.RentalSchedule;
-import com.project.CarRentalProject.repository.CarDescRepository;
 import com.project.CarRentalProject.repository.CarRepository;
 import com.project.CarRentalProject.repository.ClientRepository;
 import com.project.CarRentalProject.repository.RentalScheduleRepository;
