@@ -20,9 +20,9 @@ public class CarController {
     public CarController(CarService carService) {this.carService = carService;}
 
     //CRUD
-    @PostMapping
-    public ResponseEntity<CarDTO> addCar(@RequestBody final CarDTO carDTO){
-        Car newCar = carService.addCar(Car.from(carDTO));
+    @PostMapping("/{id}")
+    public ResponseEntity<CarDTO> addCar(@PathVariable final Long id, @RequestBody final CarDTO carDTO){
+        Car newCar = carService.addCar(id, Car.from(carDTO));
 
         return new ResponseEntity<>(CarDTO.from(newCar), HttpStatus.OK);
     }

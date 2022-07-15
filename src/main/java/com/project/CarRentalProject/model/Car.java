@@ -14,10 +14,9 @@ public class Car {
     @Column(updatable = false)
     private Long carId;
 
-    @Column(nullable = false, updatable = false)
-    //@OneToMany(fetch = FetchType.LAZY)
-    //@JoinColumn(name = "descId")
-    private Long descId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "descId", nullable = false, updatable = false)
+    private CarDesc carDesc;
 
     @Column(nullable = false)
     private Float bookValue;
@@ -26,7 +25,6 @@ public class Car {
         Car car = new Car();
 
         car.setBookValue(carDTO.getBookValue());
-        car.setDescId(carDTO.getDescId());
 
         return car;
     }

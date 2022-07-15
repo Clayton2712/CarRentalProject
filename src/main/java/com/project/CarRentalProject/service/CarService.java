@@ -1,6 +1,8 @@
 package com.project.CarRentalProject.service;
 
 import com.project.CarRentalProject.model.Car;
+import com.project.CarRentalProject.model.CarDesc;
+import com.project.CarRentalProject.repository.CarDescRepository;
 import com.project.CarRentalProject.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,13 +13,19 @@ import java.util.List;
 @Service
 public class CarService {
     private final CarRepository carRepository;
+    private final CarDescRepository carDescRepository;
 
     @Autowired //Inject CarRepo
-    public CarService(CarRepository carRepository) {
+    public CarService(CarRepository carRepository, CarDescRepository carDescRepository) {
         this.carRepository = carRepository;
+        this.carDescRepository = carDescRepository;
     }
 
-    public Car addCar(Car car) {return carRepository.save(car);}
+    public Car addCar(Long descId, Car car) {
+        car.setCarDesc(carDescRepository.getReferenceById(descId));
+
+        return carRepository.save(car);
+    }
 
     public List<Car> getAllCars() {return carRepository.findAll();}
 
