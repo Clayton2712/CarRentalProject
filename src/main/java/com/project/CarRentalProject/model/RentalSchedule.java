@@ -3,6 +3,7 @@ package com.project.CarRentalProject.model;
 import com.project.CarRentalProject.model.DTOs.RentalScheduleDTO;
 import lombok.Data;
 import javax.persistence.*;
+import java.sql.Date;
 
 
 @Data
@@ -14,23 +15,23 @@ public class RentalSchedule {
     @Column(updatable = false)
     private Long rentalId;
 
-    @Column(updatable = false, nullable = false)
-    private Long clientId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "clientId", nullable = false, updatable = false)
+    private Client client;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "carId", nullable = false, updatable = false)
+    private Car car;
 
     @Column(nullable = false)
-    private Long carId;
+    private Date collectionDate;
 
     @Column(nullable = false)
-    private String collectionDate;
-
-    @Column(nullable = false)
-    private String returnDate;
+    private Date returnDate;
 
     public static RentalSchedule from(RentalScheduleDTO rentalScheduleDTO){
         RentalSchedule rentalSchedule = new RentalSchedule();
 
-        rentalSchedule.setCarId(rentalScheduleDTO.getCarId());
-        rentalSchedule.setCollectionDate(rentalScheduleDTO.getCollectionDate());
         rentalSchedule.setReturnDate(rentalScheduleDTO.getReturnDate());
 
         return rentalSchedule;
