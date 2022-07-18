@@ -16,18 +16,19 @@ public class RentalScheduleService {
 
     private final RentalScheduleRepository rentalScheduleRepository;
     private final ClientRepository clientRepository;
-    private final CarRepository carRepository;
+    private final CarService carService;
 
     @Autowired
-    public RentalScheduleService(RentalScheduleRepository rentalScheduleRepository, ClientRepository clientRepository, CarRepository carRepository) {
+    public RentalScheduleService(RentalScheduleRepository rentalScheduleRepository, ClientRepository clientRepository,  CarService carService) {
         this.rentalScheduleRepository = rentalScheduleRepository;
         this.clientRepository = clientRepository;
-        this.carRepository = carRepository;
+        this.carService = carService;
     }
 
     public RentalSchedule addRentalSchedule(Long clientId, Long carId, RentalSchedule rentalSchedule){
         rentalSchedule.setClient(clientRepository.getReferenceById(clientId));
-        rentalSchedule.setCar(carRepository.getReferenceById(carId));
+        rentalSchedule.setCar(carService.getCarById(carId));
+        carService.carOut(rentalSchedule.getCar());
         rentalSchedule.setCollectionDate(Date.valueOf(java.time.LocalDate.now()));
 
         return rentalScheduleRepository.save(rentalSchedule);
@@ -41,6 +42,7 @@ public class RentalScheduleService {
         RentalSchedule rentalSchedule = getRentalScheduleById(id);
 
         rentalScheduleRepository.delete(rentalSchedule);
+        carService.carIn(rentalSchedule.getCar());
 
         return rentalSchedule;
     }

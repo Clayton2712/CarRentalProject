@@ -15,10 +15,10 @@ public class CarDesc {
     private Long descId;
 
     @Column(nullable = false, updatable = false)
-    private String carModel;
+    private String carBrand;
 
     @Column(nullable = false, updatable = false)
-    private String carBrand;
+    private String carModel;
 
     @Column(nullable = false, updatable = false)
     private String carCategory;

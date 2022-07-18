@@ -11,10 +11,10 @@ import java.sql.Date;
 public class RentalScheduleDTO {
 
     private Long rentalId;
-    private Client client;
-    private Car car;
     private Date collectionDate;
     private Date returnDate;
+    private Client client;
+    private Car car;
 
     public static RentalScheduleDTO from(RentalSchedule rentalSchedule){
         RentalScheduleDTO rentalScheduleDTO = new RentalScheduleDTO();

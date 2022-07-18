@@ -9,6 +9,7 @@ public class CarDTO {
 
     private Long carId;
     private Float bookValue;
+    private Boolean available;
     private CarDesc carDesc;
 
     public static CarDTO from(Car car){
@@ -16,6 +17,7 @@ public class CarDTO {
 
         carDTO.setBookValue(car.getBookValue());
         carDTO.setCarId(car.getCarId());
+        carDTO.setAvailable(car.getAvailable());
         carDTO.setCarDesc(car.getCarDesc());
         return carDTO;
     }

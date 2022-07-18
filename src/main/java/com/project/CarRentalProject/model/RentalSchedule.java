@@ -15,6 +15,12 @@ public class RentalSchedule {
     @Column(updatable = false)
     private Long rentalId;
 
+    @Column(nullable = false)
+    private Date collectionDate;
+
+    @Column(nullable = false)
+    private Date returnDate;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "clientId", nullable = false, updatable = false)
     private Client client;
@@ -23,11 +29,7 @@ public class RentalSchedule {
     @JoinColumn(name = "carId", nullable = false, updatable = false)
     private Car car;
 
-    @Column(nullable = false)
-    private Date collectionDate;
 
-    @Column(nullable = false)
-    private Date returnDate;
 
     public static RentalSchedule from(RentalScheduleDTO rentalScheduleDTO){
         RentalSchedule rentalSchedule = new RentalSchedule();

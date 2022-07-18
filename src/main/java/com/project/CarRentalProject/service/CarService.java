@@ -23,6 +23,7 @@ public class CarService {
 
     public Car addCar(Long descId, Car car) {
         car.setCarDesc(carDescRepository.getReferenceById(descId));
+        car.setAvailable(true);
 
         return carRepository.save(car);
     }
@@ -34,6 +35,16 @@ public class CarService {
     public Car deleteCarById(Long id) {
         Car car = getCarById(id);
         carRepository.delete(car);
+        return car;
+    }
+
+    public Car carOut(Car car){
+        car.setAvailable(false);
+        return car;
+    }
+
+    public Car carIn(Car car){
+        car.setAvailable(false);
         return car;
     }
 
