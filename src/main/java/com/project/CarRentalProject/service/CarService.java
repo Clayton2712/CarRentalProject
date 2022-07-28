@@ -39,6 +39,13 @@ public class CarService {
         return car;
     }
 
+    public void carOut(Car car){
+        car.setAvailable(false);
+    }
+
+    public void carIn(Car car){
+        car.setAvailable(false);
+    }
 
     @Transactional
     public Car updateCarById(Long id, Car car){
