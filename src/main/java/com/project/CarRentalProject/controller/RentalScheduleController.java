@@ -46,6 +46,14 @@ public class RentalScheduleController {
 
         return new ResponseEntity<>(RentalScheduleDTO.from(rentalSchedule), HttpStatus.OK);
     }
+    @GetMapping("/byClientId/{id}")
+    public ResponseEntity<List<RentalScheduleDTO>> getRentalByClientId(@PathVariable final Long id){
+        List<RentalSchedule> rentalScheduleList = rentalScheduleService.getRentalByClientId(id);
+        List<RentalScheduleDTO> rentalScheduleDTOList =
+                rentalScheduleList.stream().map(RentalScheduleDTO::from).collect(Collectors.toList());
+
+        return new ResponseEntity<>(rentalScheduleDTOList, HttpStatus.OK);
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<RentalScheduleDTO> deleteRentalSchedule(@PathVariable final Long id){

@@ -1,5 +1,6 @@
 package com.project.CarRentalProject.service;
 
+import com.project.CarRentalProject.model.Client;
 import com.project.CarRentalProject.model.RentalSchedule;
 import com.project.CarRentalProject.repository.CarRepository;
 import com.project.CarRentalProject.repository.ClientRepository;
@@ -45,6 +46,11 @@ public class RentalScheduleService {
         carService.carIn(rentalSchedule.getCar());
 
         return rentalSchedule;
+    }
+
+    public List<RentalSchedule> getRentalByClientId(Long id){
+        Client client = clientRepository.getReferenceById(id);
+        return rentalScheduleRepository.findByClient(client);
     }
 
     @Transactional

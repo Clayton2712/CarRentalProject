@@ -42,9 +42,11 @@ public class CarController {
         return new ResponseEntity<>(CarDTO.from(car), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/available/{available}")
-    public ResponseEntity<List<Car>> getCarsByAvailable(@PathVariable Boolean available){
-        return new ResponseEntity<>(carService.getCarsByAvailable(available), HttpStatus.OK);
+    @GetMapping(value = "/byAvailable/{available}")
+    public ResponseEntity<List<CarDTO>> getCarsByAvailable(@PathVariable Boolean available){
+        List<Car> cars = carService.getCarsByAvailable(available);
+        List<CarDTO> carDTOList = cars.stream().map(CarDTO::from).collect(Collectors.toList());
+        return new ResponseEntity<>(carDTOList, HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/{id}")
