@@ -1,7 +1,6 @@
 package com.project.CarRentalProject.service;
 
 import com.project.CarRentalProject.model.Car;
-import com.project.CarRentalProject.model.CarDesc;
 import com.project.CarRentalProject.repository.CarDescRepository;
 import com.project.CarRentalProject.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,21 +31,14 @@ public class CarService {
 
     public Car getCarById(Long id) {return carRepository.getReferenceById(id);}
 
+    public List<Car> getCarsByAvailable(Boolean available) {return carRepository.findByAvailable(available);}
+
     public Car deleteCarById(Long id) {
         Car car = getCarById(id);
         carRepository.delete(car);
         return car;
     }
 
-    public Car carOut(Car car){
-        car.setAvailable(false);
-        return car;
-    }
-
-    public Car carIn(Car car){
-        car.setAvailable(false);
-        return car;
-    }
 
     @Transactional
     public Car updateCarById(Long id, Car car){

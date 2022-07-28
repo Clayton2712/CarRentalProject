@@ -55,7 +55,7 @@ public class RentalScheduleController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<RentalScheduleDTO> updateRentalSchedule(@PathVariable final Long id,
+    public ResponseEntity<RentalScheduleDTO> updateRentalSchedule(@PathVariable final Long id, @RequestBody
                                                                   final RentalScheduleDTO rentalScheduleDTO){
         RentalSchedule updatedRentalSchedule = rentalScheduleService.updateRentalScheduleById(id,
                 RentalSchedule.from(rentalScheduleDTO));
