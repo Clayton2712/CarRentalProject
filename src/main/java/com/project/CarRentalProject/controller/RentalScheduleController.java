@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/rentalSchedule")
+@RequestMapping("/rentalSchedule") @CrossOrigin(origins = "*")
 public class RentalScheduleController {
     private final RentalScheduleService rentalScheduleService;
 

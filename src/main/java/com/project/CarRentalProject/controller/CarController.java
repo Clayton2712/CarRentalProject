@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/car")
+@RequestMapping("/car") @CrossOrigin(origins = "*")
 public class CarController {
     private final CarService carService;
 
